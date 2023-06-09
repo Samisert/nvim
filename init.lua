@@ -45,6 +45,14 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{
 		event = "VeryLazy",
+		"tpope/vim-rhubarb"
+	},
+	{
+		event = "VeryLazy",
+		"rhysd/conflict-marker.vim"
+	},
+	{
+		event = "VeryLazy",
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"neovim/nvim-lspconfig",
@@ -66,7 +74,12 @@ require("lazy").setup({
 	{
 		event = "VeryLazy",
 		"tpope/vim-fugitive",
-		cmd = "Git"
+		cmd = "Git",
+		config = function()
+			-- convert
+			vim.cmd.cnoreabbrev([[git Git]])
+			vim.cmd.cnoreabbrev([[gp Git push]])
+		end,
 	},
 	{
 		event = "VeryLazy",
