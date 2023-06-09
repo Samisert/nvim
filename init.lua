@@ -1,33 +1,5 @@
-local set = vim.o
-set.number = true
-set.relativenumber = true
-set.clipboard = "unnamed"
-
--- 在 copy 后高亮
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-	pattern = { "*" },
-	callback = function()
-		vim.highlight.on_yank({
-			timeout = 300,
-		})
-	end,
-})
-
--- keybindings
-local opt = { noremap = true, silent = true }
-vim.g.mapleader = " "
-vim.keymap.set("n", "<C-l>", "<C-w>l", opt)
-vim.keymap.set("n", "<C-h>", "<C-w>h", opt)
-vim.keymap.set("n", "<C-j>", "<C-w>j", opt)
-vim.keymap.set("n", "<C-k>", "<C-w>k", opt)
-vim.keymap.set("n", "<Leader>v", "<C-w>v", opt)
-vim.keymap.set("n", "<Leader>s", "<C-w>s", opt)
-vim.keymap.set("n", "<Leader>[", "<C-o>", opt)
-vim.keymap.set("n", "<Leader>]", "<C-i>", opt)
-
--- https://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
-vim.keymap.set("n", "j", [[v:count ? 'j' : 'gj']], { noremap = true, expr = true })
-vim.keymap.set("n", "k", [[v:count ? 'k' : 'gk']], { noremap = true, expr = true })
+require("config.options")
+require("config.keymaps")
 
 -- lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -42,6 +14,10 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
+
+-- lazy.nvim loading plugins
+require("lazy").setup("plugins")
+
 require("lazy").setup({
 	{
 		event = "VeryLazy",
@@ -49,7 +25,23 @@ require("lazy").setup({
 	},
 	{
 		event = "VeryLazy",
-		"rhysd/conflict-marker.vim"
+		"rhysd/conflict-marker.vim",
+		config = function()
+			vim.cmd([[
+			" disable the default highlight group
+			let g:conflict_marker_highlight_group = ''
+
+			" Include text after begin and end markers
+			let g:conflict_marker_begin = '^<<<<<<< .*$'
+			let g:conflict_marker_end   = '^>>>>>>> .*$'
+
+			highlight ConflictMarkerBegin guibg=#2f7366
+			highlight ConflictMarkerOurs guibg=#2e5049
+			highlight ConflictMarkerTheirs guibg=#344f69
+			highlight ConflictMarkerEnd guibg=#2f628e
+			highlight ConflictMarkerCommonAncestorsHunk guibg=#754a81
+			]])
+		end,
 	},
 	{
 		event = "VeryLazy",
@@ -69,16 +61,6 @@ require("lazy").setup({
 		event = "VeryLazy",
 		config = function()
 			require("nvim-autopairs").setup({})
-		end,
-	},
-	{
-		event = "VeryLazy",
-		"tpope/vim-fugitive",
-		cmd = "Git",
-		config = function()
-			-- convert
-			vim.cmd.cnoreabbrev([[git Git]])
-			vim.cmd.cnoreabbrev([[gp Git push]])
 		end,
 	},
 	{
