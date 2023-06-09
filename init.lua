@@ -70,6 +70,13 @@ require("lazy").setup({
 	},
 	{
 		event = "VeryLazy",
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	},
+	{
+		event = "VeryLazy",
 		"williamboman/mason.nvim",
 		build = ":MasonUpdate", -- :MasonUpdate updates registry contents
 	},
