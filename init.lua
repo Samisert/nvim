@@ -56,13 +56,17 @@ require("lazy").setup({
 			"L3MON4D3/LuaSnip",
 		},
 	},
-
 	{
 		"windwp/nvim-autopairs",
 		event = "VeryLazy",
 		config = function()
 			require("nvim-autopairs").setup({})
 		end,
+	},
+	{
+		event = "VeryLazy",
+		"tpope/vim-fugitive",
+		cmd = "Git"
 	},
 	{
 		event = "VeryLazy",
