@@ -1,0 +1,5 @@
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>p', builtin.find_files, { desc = "find files"} )
+vim.keymap.set('n', '<leader>P', builtin.live_grep, { desc = "live grep"} )
+vim.keymap.set('n', '<leader>rs', builtin.buffers, { desc = "resume"} )
+vim.keymap.set('n', '<leader>q', builtin.help_tags, { desc = "oldfiles"} )

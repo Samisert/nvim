@@ -1,1 +1,8 @@
 require("configs.lspconfig")
+require("configs.telescope")
+require("configs.nvim-cmp")
+require("configs.nvim-tree")
+require("configs.null-ls")
+require("configs.persistence")
+require("configs.treesitter")
+require("configs.dap")
