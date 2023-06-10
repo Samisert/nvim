@@ -1,0 +1,20 @@
+surr*ound_words             ysiw)           (surround_words)
+surround_words
+
+*make strings               ys$"            "make strings"
+make strings
+
+[delete ar*ound me!]        ds]             delete around me!
+[delete around me!]
+
+remove <b>HTML t*ags</b>    dst             remove HTML tags
+remove <b>HTML tags</b>
+
+'change quot*es'            cs'"            "change quotes"
+'change quotes'
+
+<b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
+<b>or tag types</b>
+
+delete(functi*on calls)     dsf             function calls
+delete(function calls)

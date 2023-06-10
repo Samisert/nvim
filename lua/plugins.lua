@@ -64,14 +64,17 @@ return {
 	-- dap stuffs
 	{
 		"mfussenegger/nvim-dap",
+		event = "VeryLazy",
 	},
 	{
 		"rcarriga/nvim-dap-ui",
+		event = "VeryLazy",
 	},
 
 	-- telescope
 	{
 		"nvim-telescope/telescope.nvim",
+		event = "VeryLazy",
 		cmd = "Telescope",
 		tag = "0.1.1",
 		dependencies = { "nvim-lua/plenary.nvim" },
@@ -97,6 +100,7 @@ return {
 	},
 	{
 		"folke/neodev.nvim",
+		event = "VeryLazy",
 	},
 	{
 		"windwp/nvim-autopairs",
@@ -113,8 +117,9 @@ return {
 	-- nvim-tree
 	{
 		"nvim-tree/nvim-tree.lua",
+		event = "VeryLazy",
 		cmd = { "NvimTreeToggle" },
-		dependencies = { "kyazdani42/nvim-web-devicons" },
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 
 	-- sessions
@@ -123,6 +128,62 @@ return {
 		event = "BufReadPre", -- this will only start session saving when an actual file was opened
 		config = function()
 			require("persistence").setup()
+		end,
+	},
+
+	-- bufferline
+	{
+		"akinsho/bufferline.nvim",
+		event = "VeryLazy",
+		version = "*",
+		dependencies = "nvim-tree/nvim-web-devicons",
+	},
+
+	-- eyeliner
+	{
+		"jinh0/eyeliner.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("eyeliner").setup({
+				highlight_on_key = true, -- show highlights only after keypress
+				dim = false, -- dim all other characters if set to true (recommended!)
+			})
+		end,
+	},
+
+	-- nvim-surround
+	{
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	},
+
+	-- which-key.nvim
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+		end,
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		},
+	},
+
+	-- comment
+	{
+		"numToStr/Comment.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("Comment").setup()
 		end,
 	},
 }
