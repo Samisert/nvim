@@ -1,9 +1,24 @@
 return {
 
+	--[[ * UI ]]
 	-- colorscheme
 	require("colorscheme"),
+	-- bufferline: tab window
+	{
+		"akinsho/bufferline.nvim",
+		event = "VeryLazy",
+		version = "*",
+		dependencies = "nvim-tree/nvim-web-devicons",
+	},
+	-- lualine: statusline
+	{
+		"nvim-lualine/lualine.nvim",
+		event = "VeryLazy",
+		requires = { "nvim-tree/nvim-web-devicons", opt = true },
+	},
 
-	-- git stuffs
+	--[[ * VSC ]]
+	-- git-tools
 	{
 		"tpope/vim-fugitive",
 		event = "VeryLazy",
@@ -14,6 +29,7 @@ return {
 			vim.cmd.cnoreabbrev([[gp Git push]])
 		end,
 	},
+	-- gitsigns
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "VeryLazy",
@@ -21,10 +37,12 @@ return {
 			require("gitsigns").setup()
 		end,
 	},
+	-- github browser
 	{
 		"tpope/vim-rhubarb",
 		event = "VeryLazy",
 	},
+	-- conflict-marker better view
 	{
 		"rhysd/conflict-marker.vim",
 		event = "VeryLazy",
@@ -46,20 +64,24 @@ return {
 		end,
 	},
 
-	-- lsp stuffs
+	--[[ * LSP ]]
+	-- mason: LSP config-tools
 	{
 		"williamboman/mason.nvim",
 		event = "VeryLazy",
 		build = ":MasonUpdate", -- :MasonUpdate updates registry contents
 	},
+	-- mason-lspconfig: pipe for mason and lspconfig
 	{
 		"williamboman/mason-lspconfig.nvim",
 		event = "VeryLazy",
 	},
+	-- lspconfig
 	{
 		"neovim/nvim-lspconfig",
 		event = "VeryLazy",
 	},
+	-- lspsaga: better lsp views
 	{
 		"glepnir/lspsaga.nvim",
 		event = "VeryLazy",
@@ -70,26 +92,20 @@ return {
 		},
 	},
 
-	-- dap stuffs
+	--[[ * DAP ]]
+	-- nvim-dap
 	{
 		"mfussenegger/nvim-dap",
 		event = "VeryLazy",
 	},
+	-- nvim-dap-ui: for better debug
 	{
 		"rcarriga/nvim-dap-ui",
 		event = "VeryLazy",
 	},
 
-	-- telescope
-	{
-		"nvim-telescope/telescope.nvim",
-		event = "VeryLazy",
-		cmd = "Telescope",
-		tag = "0.1.1",
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
-
-	-- cmp
+	--[[ * Edit ]]
+	-- cmp: complete the code
 	{
 		"hrsh7th/nvim-cmp",
 		event = "VeryLazy",
@@ -103,10 +119,12 @@ return {
 			"L3MON4D3/LuaSnip",
 		},
 	},
+	-- null-ls: code lint and formatter
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		event = "VeryLazy",
 	},
+	-- neodev: for help document
 	{
 		"folke/neodev.nvim",
 		event = "VeryLazy",
@@ -116,6 +134,7 @@ return {
 			})
 		end,
 	},
+	-- autopairs
 	{
 		"windwp/nvim-autopairs",
 		event = "VeryLazy",
@@ -123,36 +142,11 @@ return {
 			require("nvim-autopairs").setup({})
 		end,
 	},
+	-- textobjects: more textobjects
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 	},
-
-	-- nvim-tree
-	{
-		"nvim-tree/nvim-tree.lua",
-		event = "VeryLazy",
-		cmd = { "NvimTreeToggle" },
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-	},
-
-	-- sessions
-	{
-		"folke/persistence.nvim",
-		event = "BufReadPre", -- this will only start session saving when an actual file was opened
-		config = function()
-			require("persistence").setup()
-		end,
-	},
-
-	-- bufferline
-	{
-		"akinsho/bufferline.nvim",
-		event = "VeryLazy",
-		version = "*",
-		dependencies = "nvim-tree/nvim-web-devicons",
-	},
-
 	-- eyeliner
 	{
 		"jinh0/eyeliner.nvim",
@@ -164,7 +158,6 @@ return {
 			})
 		end,
 	},
-
 	-- nvim-surround
 	{
 		"kylechui/nvim-surround",
@@ -176,8 +169,32 @@ return {
 			})
 		end,
 	},
+	-- comment
+	{
+		"numToStr/Comment.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("Comment").setup()
+		end,
+	},
 
-	-- which-key.nvim
+	--[[ * UITLS ]]
+	-- nvim-tree
+	{
+		"nvim-tree/nvim-tree.lua",
+		event = "VeryLazy",
+		cmd = { "NvimTreeToggle" },
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
+	-- telescope
+	{
+		"nvim-telescope/telescope.nvim",
+		event = "VeryLazy",
+		cmd = "Telescope",
+		tag = "0.1.1",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
+	-- which-key.nvim: show keymaps
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
@@ -186,18 +203,15 @@ return {
 			vim.o.timeoutlen = 300
 		end,
 		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
 		},
 	},
-
-	-- comment
+	-- sessions
 	{
-		"numToStr/Comment.nvim",
-		event = "VeryLazy",
+		"folke/persistence.nvim",
+		event = "BufReadPre", -- this will only start session saving when an actual file was opened
 		config = function()
-			require("Comment").setup()
+			require("persistence").setup()
 		end,
 	},
 }
