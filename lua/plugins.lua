@@ -60,6 +60,15 @@ return {
 		"neovim/nvim-lspconfig",
 		event = "VeryLazy",
 	},
+	{
+		"glepnir/lspsaga.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			{ "nvim-tree/nvim-web-devicons" },
+			--Please make sure you install markdown and markdown_inline parser
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
+	},
 
 	-- dap stuffs
 	{
