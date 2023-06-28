@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 require("mason").setup()
 
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "clangd", "cmake", "pyright" },
+	ensure_installed = { "lua_ls", "clangd", "pyright" },
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()

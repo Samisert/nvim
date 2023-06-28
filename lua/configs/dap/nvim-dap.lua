@@ -289,25 +289,13 @@ dap.adapters.cppdbg = {
   id = "cppdbg",
   type = "executable",
   command =
-  "C:\\Users\\93583\\AppData\\Local\\nvim-data\\mason\\packages\\cpptools\\extension\\debugAdapters\\bin\\OpenDebugAD7.exe",
+  -- 此处必须使用绝对路径
+  "/home/archlinux/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7",
   options = {
     detached = false,
   },
 }
 
--- codelldb
-dap.adapters.codelldb = {
-  type = "server",
-  port = "${port}",
-  executable = {
-    -- CHANGE THIS to your path!
-    command = "C:\\Users\\93583\\AppData\\Local\\nvim-data\\mason\\packages\\codelldb\\extension\\adapter\\codelldb.exe",
-    args = { "--port", "${port}" },
-
-    -- On windows you may have to uncomment this:
-    -- detached = false,
-  },
-}
 dap.configurations.c = {
   {
     name = "Launch file",
@@ -331,16 +319,6 @@ dap.configurations.c = {
     program = function()
       return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
     end,
-  },
-  {
-    name = "Launch file codelldb",
-    type = "codelldb",
-    request = "launch",
-    program = function()
-      return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-    end,
-    cwd = "${workspaceFolder}",
-    stopOnEntry = false,
   },
 }
 dap.configurations.cpp = dap.configurations.c
