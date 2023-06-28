@@ -25,9 +25,9 @@ require("lspconfig").lua_ls.setup({
 require("lspconfig").clangd.setup({
 	capabilities = capabilities,
 })
--- require("lspconfig").cmake.setup({
--- 	capabilities = capabilities,
--- })
+require("lspconfig").cmake.setup({
+	capabilities = capabilities,
+})
 require("lspconfig").pyright.setup({
 	capabilities = capabilities,
 })
