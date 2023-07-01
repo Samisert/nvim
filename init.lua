@@ -16,5 +16,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+vim.o.shell = vim.fn.executable('pwsh') and 'pwsh' or 'powershell'
+
 require("lazy").setup("plugins")
 require("configs")
