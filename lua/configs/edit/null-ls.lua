@@ -4,7 +4,6 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	sources = {
 		-- lua
-		null_ls.builtins.diagnostics.selene,
 		null_ls.builtins.formatting.stylua,
 		-- c, c++
 		-- null_ls.builtins.diagnostics.clang_check,
