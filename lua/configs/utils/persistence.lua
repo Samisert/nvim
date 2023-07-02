@@ -1,3 +1,4 @@
+require("persistence").setup({})
 local args = vim.api.nvim_get_vvar("argv")
 -- embed
 if #args > 2 then
