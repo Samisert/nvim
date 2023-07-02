@@ -22,7 +22,7 @@ return {
 	-- lspsaga: better lsp views
 	{
 		"glepnir/lspsaga.nvim",
-		event = "VeryLazy",
+		event = "LspAttach",
 		dependencies = {
 			{ "nvim-tree/nvim-web-devicons" },
 			--Please make sure you install markdown and markdown_inline parser
