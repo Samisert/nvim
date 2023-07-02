@@ -2,7 +2,16 @@ return {
 
   --[[ * UI ]]
   -- colorscheme
-  require("colorscheme"),
+  {
+    "RRethy/nvim-base16",
+    event = "VeryLazy",
+  },
+  -- lualine: statusline
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
+  },
   -- bufferline: tab window
   {
     "akinsho/bufferline.nvim",
@@ -10,11 +19,15 @@ return {
     version = "*",
     dependencies = "nvim-tree/nvim-web-devicons",
   },
-  -- lualine: statusline
+  -- lspsaga: better lsp views
   {
-    "nvim-lualine/lualine.nvim",
+    "glepnir/lspsaga.nvim",
     event = "VeryLazy",
-    dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons" },
+      --Please make sure you install markdown and markdown_inline parser
+      { "nvim-treesitter/nvim-treesitter" },
+    },
   },
 
   --[[ * VSC ]]
@@ -37,11 +50,6 @@ return {
       require("gitsigns").setup()
     end,
   },
-  -- github browser
-  {
-    "tpope/vim-rhubarb",
-    event = "VeryLazy",
-  },
   -- conflict-marker better view
   {
     "rhysd/conflict-marker.vim",
@@ -63,16 +71,17 @@ return {
       ]])
     end,
   },
-
-  --[[ * LSP ]]
-  -- lspconfig
+  -- github browser
   {
-    "neovim/nvim-lspconfig",
+    "tpope/vim-rhubarb",
     event = "VeryLazy",
   },
+
+  --[[ * LSP ]]
   -- mason: LSP config-tools
   {
     "williamboman/mason.nvim",
+    event = "VeryLazy",
     build = ":MasonUpdate", -- :MasonUpdate updates registry contents
   },
   -- mason-lspconfig: pipe for mason and lspconfig
@@ -80,15 +89,10 @@ return {
     "williamboman/mason-lspconfig.nvim",
     event = "VeryLazy",
   },
-  -- lspsaga: better lsp views
+  -- lspconfig
   {
-    "glepnir/lspsaga.nvim",
+    "neovim/nvim-lspconfig",
     event = "VeryLazy",
-    dependencies = {
-      { "nvim-tree/nvim-web-devicons" },
-      --Please make sure you install markdown and markdown_inline parser
-      { "nvim-treesitter/nvim-treesitter" },
-    },
   },
   -- clangd_extensions
   -- {
@@ -232,6 +236,7 @@ return {
   -- textobjects: more textobjects
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    event = "VeryLazy",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
   -- eyeliner
