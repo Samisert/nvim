@@ -4,14 +4,14 @@ dap.adapters.cdbg = {
   id = "cdbg",
   type = "executable",
   -- using in Windows
-  command =
-  "C:\\Users\\93583\\AppData\\Local\\nvim-data\\mason\\packages\\cpptools\\extension\\debugAdapters\\bin\\OpenDebugAD7.exe",
-  options = {
-    detached = false
-  },
-  -- using in Linux
   -- command =
-  -- "C:\\Users\\93583\\AppData\\Local\\nvim-data\\mason\\packages\\cpptools\\extension\\debugAdapters\\bin\\OpenDebugAD7",
+  -- "C:\\Users\\93583\\AppData\\Local\\nvim-data\\mason\\packages\\cpptools\\extension\\debugAdapters\\bin\\OpenDebugAD7.exe",
+  -- options = {
+  --   detached = false
+  -- },
+  -- using in Linux
+  command =
+  "/home/archlinux/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7",
   setupCommands = {
     {
       text = "-enable-pretty-printing",
@@ -38,7 +38,10 @@ dap.configurations.c = {
     request = "launch",
     MIMode = "gdb",
     miDebuggerServerAddress = "localhost:1234",
-    miDebuggerPath = "D:\\Environment\\msys64\\mingw64\\bin\\gdb.exe",
+    -- using in Windows
+    -- miDebuggerPath = "D:\\Environment\\msys64\\mingw64\\bin\\gdb.exe",
+    -- using in Linux
+    miDebuggerPath = "/usr/bin/gdb",
     cwd = "${workspaceFolder}",
     program = function()
       return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
