@@ -18,9 +18,9 @@ dap.adapters.python = function(cb, config)
     cb({
       type = "executable",
       -- using in Windows
-      -- command = "C:\\Users\\93583\\AppData\\Local\\nvim-data\\mason\\packages\\debugpy\\venv\\Scripts\\python",
+      command = "C:\\Users\\93583\\AppData\\Local\\nvim-data\\mason\\packages\\debugpy\\venv\\Scripts\\python",
       -- using in Linux
-      command = "/usr/bin/python"
+      -- command = "/usr/bin/python",
       args = { "-m", "debugpy.adapter" },
       options = {
         source_filetype = "python",
@@ -168,9 +168,9 @@ dap.configurations.python = {
     program = "${file}",
     pythonPath = function()
       -- using in Windows
-      -- return "C:\\Users\\93583\\AppData\\Local\\nvim-data\\mason\\packages\\debugpy\\venv\\Scripts\\python"
+      return "C:\\Users\\93583\\AppData\\Local\\nvim-data\\mason\\packages\\debugpy\\venv\\Scripts\\python"
       -- using in Linux
-      return "/usr/bin/python"
+      -- return "/usr/bin/python"
     end,
   },
   {
@@ -204,9 +204,9 @@ dap.configurations.python = {
     logToFile = log_to_file,
     pythonPath = function()
       -- using in Windows
-      -- return "C:\\Users\\93583\\AppData\\Local\\.virtualenvs\\debugpy\\Scripts\\python"
+      return "C:\\Users\\93583\\AppData\\Local\\.virtualenvs\\debugpy\\Scripts\\python"
       -- using in Linux
-      return "/usr/bin/python"
+      -- return "/usr/bin/python"
     end,
   },
 }

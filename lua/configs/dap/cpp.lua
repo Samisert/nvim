@@ -5,13 +5,14 @@ dap.adapters.cppdbg = {
   type = "executable",
   -- using in Windows
   options = {
-    -- command = "C:\\Users\\93583\\AppData\\Local\\nvim-data\\mason\\packages\\cpptools\\extension\\debugAdapters\\bin\\OpenDebugAD7.exe",
-    -- 	detached = false,
-    -- },
-    -- using in Linux
     command =
-    "/home/archlinux/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7",
-  }
+    "C:\\Users\\93583\\AppData\\Local\\nvim-data\\mason\\packages\\cpptools\\extension\\debugAdapters\\bin\\OpenDebugAD7.exe",
+    detached = false,
+  },
+  -- using in Linux
+  -- command =
+  -- "/home/archlinux/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7",
+  -- },
 }
 
 dap.configurations.cpp = {
@@ -39,9 +40,9 @@ dap.configurations.cpp = {
     MIMode = "gdb",
     miDebuggerServerAddress = "localhost:1234",
     -- using in Windows
-    -- miDebuggerPath = "D:\\Environment\\msys64\\mingw64\\bin\\gdb.exe",
+    miDebuggerPath = "D:\\Environment\\msys64\\mingw64\\bin\\gdb.exe",
     -- using in Linux
-    miDebuggerPath = "/usr/bin/gdb",
+    -- miDebuggerPath = "/usr/bin/gdb",
     cwd = "${workspaceFolder}",
     program = function()
       return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
