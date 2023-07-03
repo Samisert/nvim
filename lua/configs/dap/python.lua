@@ -20,7 +20,7 @@ dap.adapters.python = function(cb, config)
       -- using in Windows
       -- command = "C:\\Users\\93583\\AppData\\Local\\nvim-data\\mason\\packages\\debugpy\\venv\\Scripts\\python",
       -- using in Linux
-      command = "/usr/bin/python"
+      command = "/usr/bin/python",
       args = { "-m", "debugpy.adapter" },
       options = {
         source_filetype = "python",
