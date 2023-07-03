@@ -3,18 +3,6 @@ local null_ls = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	sources = {
-		-- -- lua
-		-- null_ls.builtins.diagnostics.selene,
-		-- null_ls.builtins.formatting.stylua,
-		-- -- c, c++
-		-- null_ls.builtins.diagnostics.clang_check,
-		-- null_ls.builtins.formatting.clang_format,
-		-- -- cmake
-		-- null_ls.builtins.diagnostics.cmake_lint,
-		-- null_ls.builtins.formatting.cmake_format,
-		-- -- python
-		-- null_ls.builtins.diagnostics.pylint,
-		-- null_ls.builtins.formatting.black,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
@@ -29,3 +17,4 @@ null_ls.setup({
 			})
 		end
 	end,
+})
