@@ -1,2 +1,7 @@
 require("configs.edit.nvim-cmp")
 require("configs.edit.null-ls")
+require("configs.edit.neodev")
+require("configs.edit.autopairs")
+require("configs.edit.nvim-surround")
+require("configs.edit.comment")
+require("configs.edit.eyeliner")

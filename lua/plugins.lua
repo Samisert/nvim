@@ -2,7 +2,16 @@ return {
 
 	--[[ * UI ]]
 	-- colorscheme
-	require("colorscheme"),
+	{
+		"RRethy/nvim-base16",
+		event = "VeryLazy",
+	},
+	-- lualine: statusline
+	{
+		"nvim-lualine/lualine.nvim",
+		event = "VeryLazy",
+		dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
+	},
 	-- bufferline: tab window
 	{
 		"akinsho/bufferline.nvim",
@@ -10,11 +19,20 @@ return {
 		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
 	},
-	-- lualine: statusline
+	-- lspsaga: better lsp views
 	{
-		"nvim-lualine/lualine.nvim",
+		"glepnir/lspsaga.nvim",
+		event = "LspAttach",
+		dependencies = {
+			{ "nvim-tree/nvim-web-devicons" },
+			--Please make sure you install markdown and markdown_inline parser
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
+	},
+	-- nvim-dap-ui: for better debug
+	{
+		"rcarriga/nvim-dap-ui",
 		event = "VeryLazy",
-		requires = { "nvim-tree/nvim-web-devicons", opt = true },
 	},
 
 	--[[ * VSC ]]
@@ -37,11 +55,6 @@ return {
 			require("gitsigns").setup()
 		end,
 	},
-	-- github browser
-	{
-		"tpope/vim-rhubarb",
-		event = "VeryLazy",
-	},
 	-- conflict-marker better view
 	{
 		"rhysd/conflict-marker.vim",
@@ -49,11 +62,11 @@ return {
 		config = function()
 			vim.cmd([[
         " disable the default highlight group
-        let g:conflict_marker_highlight_group = ''
+        let g:conflict_marker_highlight_group = ""
 
         " Include text after begin and end markers
-        let g:conflict_marker_begin = '^<<<<<<< .*$'
-        let g:conflict_marker_end   = '^>>>>>>> .*$'
+        let g:conflict_marker_begin = "^<<<<<<< .*$"
+        let g:conflict_marker_end   = "^>>>>>>> .*$"
 
         highlight ConflictMarkerBegin guibg=#2f7366
         highlight ConflictMarkerOurs guibg=#2e5049
@@ -62,6 +75,11 @@ return {
         highlight ConflictMarkerCommonAncestorsHunk guibg=#754a81
       ]])
 		end,
+	},
+	-- github browser
+	{
+		"tpope/vim-rhubarb",
+		event = "VeryLazy",
 	},
 
 	--[[ * LSP ]]
@@ -81,26 +99,11 @@ return {
 		"neovim/nvim-lspconfig",
 		event = "VeryLazy",
 	},
-	-- lspsaga: better lsp views
-	{
-		"glepnir/lspsaga.nvim",
-		event = "VeryLazy",
-		dependencies = {
-			{ "nvim-tree/nvim-web-devicons" },
-			--Please make sure you install markdown and markdown_inline parser
-			{ "nvim-treesitter/nvim-treesitter" },
-		},
-	},
 
 	--[[ * DAP ]]
 	-- nvim-dap
 	{
 		"mfussenegger/nvim-dap",
-		event = "VeryLazy",
-	},
-	-- nvim-dap-ui: for better debug
-	{
-		"rcarriga/nvim-dap-ui",
 		event = "VeryLazy",
 	},
 
@@ -128,54 +131,33 @@ return {
 	{
 		"folke/neodev.nvim",
 		event = "VeryLazy",
-		config = function()
-			require("neodev").setup({
-				library = { plugins = { "nvim-dap-ui" }, types = true },
-			})
-		end,
 	},
 	-- autopairs
 	{
 		"windwp/nvim-autopairs",
 		event = "VeryLazy",
-		config = function()
-			require("nvim-autopairs").setup({})
-		end,
 	},
 	-- textobjects: more textobjects
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-	},
-	-- eyeliner
-	{
-		"jinh0/eyeliner.nvim",
 		event = "VeryLazy",
-		config = function()
-			require("eyeliner").setup({
-				highlight_on_key = true, -- show highlights only after keypress
-				dim = false, -- dim all other characters if set to true (recommended!)
-			})
-		end,
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
 	},
 	-- nvim-surround
 	{
 		"kylechui/nvim-surround",
 		version = "*", -- Use for stability; omit to use `main` branch for the latest features
 		event = "VeryLazy",
-		config = function()
-			require("nvim-surround").setup({
-				-- Configuration here, or leave empty to use defaults
-			})
-		end,
 	},
 	-- comment
 	{
 		"numToStr/Comment.nvim",
 		event = "VeryLazy",
-		config = function()
-			require("Comment").setup()
-		end,
+	},
+	-- eyeliner
+	{
+		"jinh0/eyeliner.nvim",
+		event = "VeryLazy",
 	},
 
 	--[[ * UITLS ]]
@@ -202,16 +184,10 @@ return {
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
 		end,
-		opts = {
-			-- refer to the configuration section below
-		},
 	},
 	-- sessions
 	{
 		"folke/persistence.nvim",
 		event = "BufReadPre", -- this will only start session saving when an actual file was opened
-		config = function()
-			require("persistence").setup()
-		end,
 	},
 }
