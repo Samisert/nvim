@@ -134,11 +134,6 @@ return {
 			"L3MON4D3/LuaSnip",
 		},
 	},
-	-- null-ls: code lint and formatter
-	{
-		"jose-elias-alvarez/null-ls.nvim",
-		event = "VeryLazy",
-	},
 	-- neodev: for help document
 	{
 		"folke/neodev.nvim",
