@@ -6,6 +6,13 @@ return {
 		"RRethy/nvim-base16",
 		event = "VeryLazy",
 	},
+	-- alpha-nvim: welcome page
+	-- {
+	-- 	"goolord/alpha-nvim",
+	-- 	event = "VimEnter",
+	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	-- 	opts = { require("alpha.themes.dashboard").config },
+	-- },
 	-- lualine: statusline
 	{
 		"nvim-lualine/lualine.nvim",
@@ -104,6 +111,11 @@ return {
 	-- nvim-dap
 	{
 		"mfussenegger/nvim-dap",
+		event = "VeryLazy",
+	},
+	-- cmake-tools
+	{
+		"Civitasv/cmake-tools.nvim",
 		event = "VeryLazy",
 	},
 

@@ -1,24 +1,25 @@
 local dap = require("dap")
 
-dap.adapters.cdbg = {
-  id = "cdbg",
+dap.adapters.cppdbg = {
+  -- *** using in Linux
+  -- id = "cppdbg",
+  -- type = "executable",
+  -- command =
+  -- "/absolute/path/to/cpptools/extension/debugAdapters/bin/OpenDebugAD7",
+  -- *** using in Windows
+  id = "cppdbg",
   type = "executable",
-  -- using in Windows
   command =
-  "C:\\Users\\93583\\AppData\\Local\\nvim-data\\mason\\packages\\cpptools\\extension\\debugAdapters\\bin\\OpenDebugAD7.exe",
+  "D:\\Environment\\cpptools\\v1.17.5\\extension\\debugAdapters\\bin\\OpenDebugAD7.exe",
   options = {
     detached = false
   },
-  -- using in Linux
-  -- command =
-  -- "/home/archlinux/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7",
-  -- },
 }
 
 dap.configurations.c = {
   {
     name = "Launch file",
-    type = "cdbg",
+    type = "cppdbg",
     request = "launch",
     program = function()
       return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
@@ -34,18 +35,41 @@ dap.configurations.c = {
     },
   },
   {
+    -- *** using in Linux
+    -- name = "Attach to gdbserver :1234",
+    -- type = "cppdbg",
+    -- request = "launch",
+    -- MIMode = "gdb",
+    -- miDebuggerServerAddress = "localhost:1234",
+    -- miDebuggerPath = "/usr/bin/gdb",
+    -- cwd = "${workspaceFolder}",
+    -- program = function()
+    --   return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+    -- end,
+    -- setupCommands = {
+    --   {
+    --     text = "-enable-pretty-printing",
+    --     description = "enable pretty printing",
+    --     ignoreFailures = false
+    --   },
+    -- },
+    -- *** using in Windows
     name = "Attach to gdbserver :1234",
-    type = "cdbg",
+    type = "cppdbg",
     request = "launch",
     MIMode = "gdb",
     miDebuggerServerAddress = "localhost:1234",
-    -- using in Windows
-    miDebuggerPath = "D:\\Environment\\msys64\\mingw64\\bin\\gdb.exe",
-    -- using in Linux
-    -- miDebuggerPath = "/usr/bin/gdb",
+    miDebuggerPath = "D:\\Environment\\Cygwin\\v2_926\\bin\\gdb.exe",
     cwd = "${workspaceFolder}",
     program = function()
       return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
     end,
+    setupCommands = {
+      {
+        text = "-enable-pretty-printing",
+        description = "enable pretty printing",
+        ignoreFailures = false
+      },
+    },
   }
 }

@@ -3,7 +3,6 @@ local M = {}
 function M.prepare()
   require("clangd_extensions").setup({
     server = {
-      cmd = { "c:\\Users\\93853\\AppData\\Local\\nvim-data\\mason\\packages\\clangd\\clangd_16.0.2\\bin\\clangd.exe", "--query-driver=/**/*", "--clang-tidy", "--header-insertion=never" },
       capabilities = require("cmp_nvim_lsp").default_capabilities(),
       -- on_attach = function(client, bufnr)
       --   require("nvim-navic").attach(client, bufnr)
