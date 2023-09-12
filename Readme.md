@@ -1,1 +1,2 @@
-A test for contribution counts.
+#My neovim configurations
+A little config by myself using reference.
