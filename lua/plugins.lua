@@ -186,7 +186,7 @@ return {
 	-- which-key.nvim: show keymaps
 	{
 		"folke/which-key.nvim",
-		event = "VeryLazy",
+		--event = "VeryLazy",
 		init = function()
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
