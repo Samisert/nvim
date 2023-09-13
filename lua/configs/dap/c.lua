@@ -10,7 +10,7 @@ dap.adapters.cppdbg = {
   id = "cppdbg",
   type = "executable",
   command =
-  "D:\\Environment\\cpptools\\v1.17.5\\extension\\debugAdapters\\bin\\OpenDebugAD7.exe",
+  "D:\\nvim-data\\mason\\packages\\cpptools\\extension\\debugAdapters\\bin\\OpenDebugAD7.exe",
   options = {
     detached = false
   },
